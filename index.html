@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dwiki Ikhwan — Senior Full-Stack Developer (.NET, Azure, React)</title>
-<meta name="description" content="Freelance backend & full-stack developer: REST API .NET, aplikasi web, aplikasi mobile React Native, dan otomasi dokumen PDF.">
+<title>Dwiki Ikhwan — Freelance .NET &amp; Full-Stack Developer</title>
+<meta name="description" content="Developer .NET, backend, dan full-stack freelance: REST API, aplikasi web, aplikasi mobile React Native, serta otomasi dokumen dan AI.">
+<meta name="theme-color" content="#1F4E8C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231F4E8C'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3EDI%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@500;600&family=Anton&display=swap" rel="stylesheet">
@@ -178,7 +180,7 @@ section.alt .card{background:var(--paper)}
 /* experience */
 .timeline{position:relative;list-style:none;margin:0;padding:0}
 .timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:14px;width:2px;background:var(--line)}
-.timeline .tl-fill{position:absolute;left:5px;top:8px;bottom:14px;width:2px;background:var(--navy);transform:scaleY(0);transform-origin:top;transition:transform .2s ease-out}
+.timeline::after{content:"";position:absolute;left:5px;top:8px;bottom:14px;width:2px;background:var(--navy);transform:scaleY(var(--p,0));transform-origin:top;transition:transform .2s ease-out}
 .timeline li{position:relative;padding:0 0 26px 28px}
 .timeline li::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2.5px solid var(--navy);box-sizing:border-box;z-index:1;transition:background .3s,transform .3s,box-shadow .3s}
 .timeline li.in::before{background:var(--navy);box-shadow:0 0 0 4px var(--tint)}
@@ -198,12 +200,28 @@ section.alt .card{background:var(--paper)}
 .skills h3{font-size:1rem;margin-bottom:6px}
 .skills p{color:var(--muted);margin:0;font-size:.95rem}
 .two{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:start}
-@media (prefers-reduced-motion:reduce){.timeline .tl-fill,.timeline li::before,.tl-card{transition:none}.timeline .tl-fill{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.timeline::after,.timeline li::before,.tl-card{transition:none}.timeline::after{transform:scaleY(1)}.timeline li::before{background:var(--navy)}}
 
 /* contact + footer */
-.contact dl{display:grid;grid-template-columns:110px 1fr;gap:8px 16px;margin:24px 0 28px}
-.contact dt{color:var(--muted)}
-.contact dd{margin:0}
+.ctc{list-style:none;margin:26px 0 30px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px;max-width:780px}
+.ctc li{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.ctc li:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 8px 20px rgba(27,36,51,.08)}
+.cico{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--navy);display:grid;place-items:center;flex:none;transition:background .2s,color .2s}
+.cico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ctc li:hover .cico{background:var(--btn);color:#fff}
+.ctc small{display:block;color:var(--muted);font-size:.8rem;line-height:1.3}
+.ctc li>div{min-width:0}
+.ctc a,.ctc li span:not(.cico){font-weight:500;font-size:.95rem;overflow-wrap:break-word}
+@media (max-width:700px){.ctc{grid-template-columns:1fr;gap:10px;margin:22px 0 26px}}
+@media (max-width:520px){
+  .ctc li{padding:12px 14px;gap:12px}
+  .cico{width:38px;height:38px}
+  .cico svg{width:18px;height:18px}
+  .ctc a,.ctc li span:not(.cico){font-size:.88rem}
+  .ctc small{font-size:.76rem}
+  .contact .btn{display:block;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){.ctc li,.cico{transition:none}.ctc li:hover{transform:none}}
 footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 
 /* lightbox */
@@ -211,7 +229,16 @@ dialog{border:0;padding:0;max-width:min(1100px,94vw);width:100%;max-height:92vh;
 dialog::backdrop{background:rgba(20,28,42,.7)}
 dialog .top{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
 dialog .top button{font:inherit;font-weight:600;border:1.5px solid var(--navy);background:var(--surface);color:var(--navy);border-radius:4px;padding:6px 14px;cursor:pointer}
-dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
+dialog .scroll{overflow:auto;max-height:calc(92vh - 56px);overscroll-behavior:contain}
+dialog .top strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.98rem}
+html.lb-open,html.lb-open body{overflow:hidden}
+@media (max-width:700px){
+  dialog{margin:0;max-width:100vw;width:100vw;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;border-radius:0}
+  dialog .scroll{max-height:calc(100vh - 58px);max-height:calc(100dvh - 58px);-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
+  #lbi{width:max(100%,880px);max-width:none}
+  dialog .top{padding:10px 14px}
+  dialog .top button{padding:9px 18px}
+}
 
 @media (max-width:860px){
   .hero{padding:36px 0 44px}
@@ -230,7 +257,6 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
 @media (max-width:520px){
   .frame img{aspect-ratio:16/8.2;transform:scale(1.26);transform-origin:24% 4%;object-position:24% 4%}
 }
-@media (max-width:520px){ .contact dl{grid-template-columns:1fr} }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -263,16 +289,16 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div>
-      <h1>Developer backend dan full-stack untuk sistem bisnis yang harus berjalan andal.</h1>
-      <p class="lead">Saya membangun REST API, aplikasi web, dan aplikasi mobile. Lebih dari 9 tahun bekerja dengan .NET, Azure, dan JavaScript modern untuk sektor energi, manufaktur, dan ERP.</p>
+      <h1>Saya membangun sistem bisnis yang andal, dari API dan aplikasi web sampai aplikasi mobile.</h1>
+      <p class="lead">Dengan 9+ tahun pengalaman di .NET, Azure, dan JavaScript modern, saya membantu perusahaan energi, manufaktur, dan ERP mengubah proses yang rumit menjadi aplikasi yang mudah dipakai tim Anda.</p>
       <ul class="facts">
         <li>9+ tahun pengalaman</li>
         <li>Microsoft Azure Fundamentals (AZ-900)</li>
         <li>Bekerja remote, bahasa Indonesia &amp; Inggris</li>
       </ul>
       <div class="btns">
-        <a class="btn primary" href="https://wa.me/6281286993772?text=Halo%20Dwiki%2C%20saya%20tertarik%20dengan%20jasa%20pengembangan%20software%20Anda." target="_blank" rel="noopener">Hubungi via WhatsApp</a>
-        <a class="btn ghost" href="#proyek">Lihat proyek</a>
+        <a class="btn primary" href="https://wa.me/6281286993772?text=Halo%20Dwiki%2C%20saya%20tertarik%20dengan%20jasa%20pengembangan%20software%20Anda." target="_blank" rel="noopener">Diskusikan proyek Anda</a>
+        <a class="btn ghost" href="#proyek">Lihat hasil kerja saya</a>
       </div>
     </div>
     <figure class="hero-fig" style="margin:0">
@@ -281,7 +307,7 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
         <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
         <img id="heroimg" src="assets/dashboard.webp" alt="Dashboard realisasi kuota impor baja dengan grafik penggunaan dan tabel realisasi impor" width="1400" height="960">
       </div></div>
-      <figcaption>Dashboard kuota impor baja, salah satu sistem yang saya bangun.</figcaption>
+      <figcaption>Salah satu sistem yang saya bangun: dashboard kuota impor baja yang dipakai tim EXIM.</figcaption>
     </figure>
   </div>
 </div>
@@ -291,9 +317,9 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
     <div class="photo"><img src="assets/dwiki.webp" alt="Foto Dwiki Ikhwan" width="720" height="960"></div>
     <div>
       <h2>Tentang saya</h2>
-      <p>Saya Dwiki Ikhwan, developer di Bogor yang bekerja remote. Sejak 2017 saya membangun aplikasi untuk perusahaan energi, manufaktur, dan ERP, dari modul untuk ratusan klien perusahaan sampai sistem internal yang dipakai tim operasional setiap hari.</p>
-      <p>Saya terbiasa bekerja dengan tim yang tersebar di beberapa zona waktu, menjelaskan pilihan teknis dengan bahasa yang mudah dipahami, dan menyerahkan hasil kerja yang rapi: kode teruji, dokumentasi, dan alur yang bisa diteruskan tim Anda. Saya juga telah menjadi Scrum Master selama lebih dari 3 tahun.</p>
-      <p>Di luar pekerjaan utama, saya mengerjakan proyek pribadi seperti aplikasi mobile Djajan dan portal admin DJualan.</p>
+      <p>Saya Dwiki Ikhwan, developer remote di Bogor. Sejak 2017 saya membangun aplikasi untuk perusahaan energi, manufaktur, dan ERP, mulai dari modul yang melayani lebih dari 1.000 klien perusahaan sampai sistem internal yang menjadi andalan tim operasional.</p>
+      <p>Bagi saya, proyek yang baik bukan hanya kode yang berjalan. Anda tahu apa yang sedang dikerjakan, pilihan teknis dijelaskan dengan bahasa yang mudah dipahami, dan hasil akhirnya rapi: kode teruji, terdokumentasi, dan siap diteruskan tim Anda. Selama lebih dari 3 tahun sebagai Scrum Master, saya terbiasa memimpin tim lintas zona waktu agar pekerjaan tetap terarah dan tepat sasaran.</p>
+      <p>Di luar pekerjaan utama, saya terus membangun proyek pribadi seperti aplikasi mobile Djajan dan portal admin DJualan, cara saya menjaga keterampilan tetap tajam.</p>
       <div class="hob-wrap" id="hobWrap">
         <button type="button" class="hob-toggle" id="hobToggle" aria-expanded="false" aria-controls="hobPanel">
           <span class="hob-title">Hobi</span>
@@ -318,14 +344,14 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
   <div class="wrap">
     <div class="head">
       <h2>Layanan</h2>
-      <p class="lead">Pekerjaan yang paling sering saya kerjakan dan paling saya kuasai.</p>
+      <p class="lead">Lima hal yang paling saya kuasai, dan siap saya kerjakan untuk Anda.</p>
     </div>
     <div class="grid2">
-      <div class="card"><h3>REST API dan backend</h3><p>API dengan ASP.NET Core dan C#, autentikasi JWT/HMAC, antrean pesan RabbitMQ, dan basis data SQL Server atau PostgreSQL. Dikemas dengan Docker.</p></div>
-      <div class="card"><h3>Aplikasi web dan dashboard</h3><p>Sistem internal, dashboard laporan, dan portal bisnis dengan Vue.js, React, atau Next.js, lengkap dengan tabel, filter, dan ekspor data.</p></div>
-      <div class="card"><h3>Aplikasi mobile</h3><p>Aplikasi Android dan iOS dengan React Native dan Expo, terhubung ke backend Node.js atau .NET.</p></div>
-      <div class="card"><h3>Otomasi dokumen dan impor data</h3><p>Membaca data dari dokumen PDF dan Excel menjadi data terstruktur, memvalidasinya, lalu memasukkannya ke sistem Anda.</p></div>
-      <div class="card"><h3>Otomasi dengan AI dan MCP</h3><p>Mengotomatiskan tugas berulang dengan Claude Code dan server MCP buatan sendiri, mulai dari pembuatan dokumen, pengujian, hingga unggah ke Google Drive. Setiap hasil ditinjau manual sebelum dipakai.</p></div>
+      <div class="card"><h3>REST API dan backend</h3><p>API yang cepat, aman, dan mudah dikembangkan. Saya bekerja dengan ASP.NET Core dan C#, autentikasi JWT/HMAC, antrean pesan RabbitMQ, serta SQL Server atau PostgreSQL, dikemas dengan Docker agar mudah dipasang di server Anda.</p></div>
+      <div class="card"><h3>Aplikasi web dan dashboard</h3><p>Ubah data yang tersebar menjadi dashboard yang jelas. Sistem internal, laporan, dan portal bisnis dengan Vue.js, React, atau Next.js, lengkap dengan tabel, filter, dan ekspor data.</p></div>
+      <div class="card"><h3>Aplikasi mobile</h3><p>Satu basis kode untuk Android dan iOS. Dibangun dengan React Native dan Expo, terhubung langsung ke backend Node.js atau .NET Anda.</p></div>
+      <div class="card"><h3>Otomasi dokumen dan impor data</h3><p>Tak perlu lagi mengetik ulang data dari dokumen. Saya mengubah PDF dan Excel menjadi data terstruktur, memvalidasinya, lalu memasukkannya ke sistem Anda.</p></div>
+      <div class="card"><h3>Otomasi dengan AI dan MCP</h3><p>Hemat waktu untuk tugas berulang. Dengan Claude Code dan server MCP buatan sendiri, saya mengotomatiskan pembuatan dokumen, pengujian, hingga unggah ke Google Drive. Setiap hasil tetap saya tinjau manual sebelum Anda gunakan.</p></div>
     </div>
   </div>
 </section>
@@ -334,13 +360,13 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
   <div class="wrap">
     <div class="head">
       <h2>Cara kerja</h2>
-      <p class="lead">Ritme Scrum yang sudah saya jalankan lebih dari 3 tahun sebagai Scrum Master.</p>
+      <p class="lead">Proses yang jelas dari awal sampai akhir, dengan ritme Scrum yang sudah saya jalankan lebih dari 3 tahun sebagai Scrum Master.</p>
     </div>
     <ol class="steps">
-      <li><h3>Diskusi dan estimasi</h3><p>Kita membahas tujuan dan batasan proyek. Anda menerima estimasi waktu dan biaya sebelum pekerjaan dimulai.</p></li>
-      <li><h3>Sprint pendek</h3><p>Pekerjaan dibagi per sprint dua mingguan dengan target yang jelas dan terukur.</p></li>
-      <li><h3>Laporan dan demo rutin</h3><p>Anda memantau kemajuan lewat demo berkala dan laporan singkat di Slack atau WhatsApp, dengan tugas dilacak di Jira.</p></li>
-      <li><h3>Serah terima</h3><p>Kode teruji, dokumentasi, dan panduan penggunaan diserahkan agar tim Anda bisa meneruskannya.</p></li>
+      <li><h3>Diskusi dan estimasi</h3><p>Kita bahas tujuan dan batasan proyek. Sebelum mulai, Anda sudah tahu estimasi waktu dan biayanya.</p></li>
+      <li><h3>Sprint pendek</h3><p>Pekerjaan dibagi per sprint dua mingguan dengan target yang jelas, jadi Anda selalu tahu apa yang akan selesai berikutnya.</p></li>
+      <li><h3>Laporan dan demo rutin</h3><p>Anda melihat kemajuan nyata lewat demo berkala dan laporan singkat di Slack atau WhatsApp. Tugas dilacak di Jira, tanpa kejutan di akhir.</p></li>
+      <li><h3>Serah terima</h3><p>Anda menerima kode teruji, dokumentasi, dan panduan penggunaan, sehingga tim Anda bisa meneruskannya tanpa bergantung pada saya.</p></li>
     </ol>
   </div>
 </section>
@@ -349,18 +375,18 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
   <div class="wrap">
     <div class="head">
       <h2>Proyek pilihan</h2>
-      <p class="lead">Klik gambar untuk melihat ukuran penuh.</p>
+      <p class="lead">Beberapa sistem nyata yang pernah saya bangun. Klik gambar untuk melihat ukuran penuh.</p>
     </div>
 
     <article class="project">
       <h3>Sistem manajemen kuota impor baja</h3>
       <p class="meta">Aplikasi web dan layanan backend untuk perusahaan trading baja di Indonesia</p>
-      <p>Sistem ini menggantikan pencatatan kuota impor secara manual. Tim EXIM dapat mengunggah dokumen izin kuota, memeriksa perbedaan data sebelum diterbitkan, lalu memantau pemakaian kuota setiap pembelian.</p>
+      <p>Sistem ini membantu tim EXIM mengelola kuota impor dengan lebih terkontrol: mengunggah dokumen izin kuota, memeriksa perbedaan data sebelum diterbitkan, lalu memantau pemakaian kuota di setiap pembelian.</p>
       <ul class="points">
-        <li>Impor dokumen kuota PDF (SPI dan USDFS), dibaca otomatis dengan parser buatan sendiri, lalu dicek perbedaannya sebelum dipublikasikan.</li>
-        <li>Dashboard realisasi: kuota terpakai, tertahan (on hold), dan tersisa, serta estimasi per bulan.</li>
-        <li>Purchase order dengan impor Excel, yang menahan kuota secara otomatis.</li>
-        <li>Riwayat perubahan kuota per kode HS dan pelabuhan tujuan.</li>
+        <li>Dokumen kuota PDF (SPI dan USDFS) dibaca otomatis oleh parser buatan sendiri, lalu perbedaannya dicek sebelum dipublikasikan, sehingga risiko salah input berkurang.</li>
+        <li>Dashboard realisasi menampilkan kuota terpakai, tertahan (on hold), dan tersisa, plus estimasi per bulan.</li>
+        <li>Purchase order dapat diimpor dari Excel dan menahan kuota secara otomatis.</li>
+        <li>Riwayat perubahan kuota per kode HS dan pelabuhan tujuan, sehingga setiap perubahan bisa ditelusuri.</li>
         <li>Arsitektur microservice: ASP.NET Core 9, JWT, HMAC, RabbitMQ, Docker.</li>
       </ul>
       <ul class="tags"><li>ASP.NET Core 9</li><li>C#</li><li>RabbitMQ</li><li>Docker</li><li>PDF parsing</li><li>JWT / HMAC</li></ul>
@@ -388,26 +414,26 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
         <li>Unit test untuk lapisan Service dan Controller.</li>
       </ul>
       <ul class="tags"><li>ASP.NET Core</li><li>C#</li><li>React</li><li>TypeScript</li><li>SQL Server</li><li>Clean architecture</li></ul>
-      <div class="placeholder">Tangkapan layar aplikasi akan segera ditambahkan. Kode sumbernya terbuka di GitHub.</div>
+      <div class="placeholder">Kode sumbernya terbuka di GitHub, dan demo langsung tersedia atas permintaan.</div>
     </article>
 
     <article class="project">
       <h3>Djajan</h3>
       <p class="meta">Aplikasi mobile marketplace makanan dan minuman untuk UMKM</p>
-      <p>Aplikasi pesan-antar bergaya GoFood/GrabFood yang berfokus pada UMKM, dengan peran Pembeli dan Penjual.</p>
+      <p>Aplikasi pesan-antar bergaya GoFood/GrabFood yang dirancang khusus untuk UMKM, dengan peran Pembeli dan Penjual.</p>
       <ul class="points">
         <li>Pembeli menelusuri penjual terdekat dengan filter radius (1 km sampai semua), lalu mencari berdasarkan nama atau produk.</li>
         <li>Menu penjual dengan foto, kategori, ukuran, dan pilihan es untuk minuman. Pilihan tersebut ikut tersimpan di keranjang.</li>
         <li>Dashboard terpisah untuk setiap peran pengguna.</li>
       </ul>
       <ul class="tags"><li>React Native</li><li>Expo</li><li>TypeScript</li><li>Node.js</li></ul>
-      <div class="placeholder">Tampilan aplikasi akan segera ditambahkan. Kode sumber bersifat privat dan dapat didemonstrasikan atas permintaan.</div>
+      <div class="placeholder">Kode sumbernya privat, dan demo langsung tersedia atas permintaan.</div>
     </article>
 
     <article class="project">
       <h3>Generator CV dengan MCP</h3>
       <p class="meta">Alat otomasi pribadi dengan C# dan Claude Desktop</p>
-      <p>Server MCP buatan sendiri yang membuat CV dalam bentuk PDF lewat percakapan dengan Claude, lalu mengunggahnya ke Google Drive.</p>
+      <p>Cukup minta lewat percakapan dengan Claude: server MCP buatan sendiri ini membuat CV dalam bentuk PDF dan langsung mengunggahnya ke Google Drive.</p>
       <ul class="points">
         <li>Satu perintah, <code>generate_resume</code>, membuat ulang PDF dari template HTML (PuppeteerSharp) beserta metadata PDF-nya.</li>
         <li>Dapat mengganti berkas lama di Google Drive tanpa mengubah tautan berbagi, sekaligus menandainya sebagai favorit.</li>
@@ -415,7 +441,7 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
         <li>Berjalan sebagai server MCP (stdio) yang terdaftar di Claude Desktop.</li>
       </ul>
       <ul class="tags"><li>C#</li><li>.NET</li><li>MCP</li><li>PuppeteerSharp</li><li>Google Drive API</li><li>OAuth2</li></ul>
-      <div class="placeholder">Tangkapan layar akan segera ditambahkan. Demo langsung dapat ditunjukkan atas permintaan.</div>
+      <div class="placeholder">Demo langsung tersedia atas permintaan.</div>
     </article>
   </div>
 </section>
@@ -425,7 +451,6 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
     <div>
       <h2 style="margin-bottom:28px">Pengalaman</h2>
       <ol class="timeline" data-tl>
-        <div class="tl-fill" aria-hidden="true"></div>
         <li><strong>Software Engineer (Remote), Unit4</strong><em>Des 2021 sampai sekarang</em><br>Modul ERP untuk 1000+ klien perusahaan, migrasi komponen C++ ke .NET Core, otomasi pengujian BDD, dan Scrum Master untuk 8 developer.</li>
         <li><strong>SharePoint Admin &amp; Web Developer, Pertamina Hulu Indonesia</strong><em>Okt 2020 sampai Nov 2021</em></li>
         <li><strong>Web Developer, ConocoPhillips</strong><em>Nov 2019 sampai Okt 2020</em></li>
@@ -434,7 +459,6 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
 
       <h3 class="exp-sub">Proyek Utama (Freelance &amp; Kontrak)</h3>
       <ol class="timeline tl-freelance" data-tl>
-        <div class="tl-fill" aria-hidden="true"></div>
         <li>
           <div class="tl-card">
             <div class="tl-top"><strong>HAKOVO Steel Manufacturing <small>(Remote)</small></strong><span class="tl-badge">Nov 2025 – Jun 2026</span></div>
@@ -479,7 +503,7 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
   <div class="wrap">
     <div class="head">
       <h2>Sertifikat</h2>
-      <p class="lead">Dapat diverifikasi secara online.</p>
+      <p class="lead">Kredensial resmi yang dapat Anda verifikasi sendiri secara online.</p>
     </div>
     <div class="grid2">
       <div class="card"><h3>Microsoft Certified: Azure Fundamentals</h3><p>Diterbitkan oleh Microsoft, Desember 2024.</p><p style="margin-top:12px"><a href="https://learn.microsoft.com/en-us/users/dwikiikhwan-8251/credentials/3400805c44da746e" target="_blank" rel="noopener">Verifikasi di Microsoft Learn</a></p></div>
@@ -490,14 +514,15 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
 
 <section id="kontak" class="contact">
   <div class="wrap">
-    <h2>Mulai diskusi proyek</h2>
-    <p class="lead">Ceritakan kebutuhan Anda, dan saya akan membalas dengan estimasi waktu dan pendekatan teknis.</p>
-    <dl>
-      <dt>WhatsApp</dt><dd><a href="https://wa.me/6281286993772" target="_blank" rel="noopener">+62 812-8699-3772</a></dd>
-      <dt>Email</dt><dd><a href="mailto:dwikiikhwan@outlook.com">dwikiikhwan@outlook.com</a></dd>
-      <dt>GitHub</dt><dd><a href="https://github.com/dwikipedia" target="_blank" rel="noopener">github.com/dwikipedia</a></dd>
-      <dt>Lokasi</dt><dd>Bogor, Indonesia (remote)</dd>
-    </dl>
+    <h2>Punya proyek? Mari diskusikan.</h2>
+    <p class="lead">Ceritakan kebutuhan Anda secara singkat. Saya akan membalas dengan estimasi waktu dan langkah teknis yang konkret.</p>
+    <ul class="ctc">
+      <li><span class="cico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>WhatsApp</small><a href="https://wa.me/6281286993772" target="_blank" rel="noopener">+62 812-8699-3772</a></div></li>
+      <li><span class="cico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><small>Email</small><a href="mailto:dwikiikhwan@outlook.com">dwikiikhwan@outlook.com</a></div></li>
+      <li><span class="cico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><div><small>LinkedIn</small><a href="https://www.linkedin.com/in/dwikiikhwan/" target="_blank" rel="noopener">linkedin.com/in/dwikiikhwan</a></div></li>
+      <li><span class="cico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.5 3.3 6.7 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg></span><div><small>GitHub</small><a href="https://github.com/dwikipedia" target="_blank" rel="noopener">github.com/dwikipedia</a></div></li>
+      <li><span class="cico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><small>Lokasi</small><span>Bogor, Indonesia (remote)</span></div></li>
+    </ul>
     <a class="btn primary" href="https://wa.me/6281286993772?text=Halo%20Dwiki%2C%20saya%20tertarik%20dengan%20jasa%20pengembangan%20software%20Anda." target="_blank" rel="noopener">Hubungi via WhatsApp</a>
   </div>
 </section>
@@ -516,19 +541,20 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
   document.querySelectorAll('.shot').forEach(function(b){
     b.addEventListener('click',function(){
       img.src=b.dataset.full; img.alt=b.dataset.title; t.textContent=window.__tr?window.__tr(b.dataset.title):b.dataset.title;
-      lb.showModal(); lb.querySelector('.scroll').scrollTop=0;
+      document.documentElement.classList.add('lb-open'); lb.showModal(); var sc=lb.querySelector('.scroll'); sc.scrollTop=0; sc.scrollLeft=0;
     });
   });
   document.getElementById('lbc').addEventListener('click',function(){lb.close()});
   lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('close',function(){document.documentElement.classList.remove('lb-open')});
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>
 <script>
 (function(){
-  var EN={"Navigasi utama": "Main navigation", "Tentang": "About", "Layanan": "Services", "Proyek": "Projects", "Pengalaman": "Experience", "Sertifikat": "Certifications", "Kontak": "Contact", "Bahasa": "Language", "Ganti tema terang/gelap": "Toggle light/dark theme", "Developer backend dan full-stack untuk sistem bisnis yang harus berjalan andal.": "Backend and full-stack developer for business systems that have to run reliably.", "Saya membangun REST API, aplikasi web, dan aplikasi mobile. Lebih dari 9 tahun bekerja dengan .NET, Azure, dan JavaScript modern untuk sektor energi, manufaktur, dan ERP.": "I build REST APIs, web apps, and mobile apps. Over 9 years of working with .NET, Azure, and modern JavaScript across energy, manufacturing, and ERP.", "9+ tahun pengalaman": "9+ years of experience", "Bekerja remote, bahasa Indonesia & Inggris": "Works remotely, Indonesian & English", "Hubungi via WhatsApp": "Contact via WhatsApp", "Lihat proyek": "View projects", "Dashboard realisasi kuota impor baja dengan grafik penggunaan dan tabel realisasi impor": "Steel import quota dashboard with usage charts and import realisation table", "Dashboard kuota impor baja, salah satu sistem yang saya bangun.": "Steel import quota dashboard, one of the systems I built.", "Tentang saya": "About me", "Foto Dwiki Ikhwan": "Photo of Dwiki Ikhwan", "Saya Dwiki Ikhwan, developer di Bogor yang bekerja remote. Sejak 2017 saya membangun aplikasi untuk perusahaan energi, manufaktur, dan ERP, dari modul untuk ratusan klien perusahaan sampai sistem internal yang dipakai tim operasional setiap hari.": "I'm Dwiki Ikhwan, a developer based in Bogor, working remotely. Since 2017 I've built applications for energy, manufacturing, and ERP companies, from modules serving hundreds of enterprise clients to internal systems used by operations teams every day.", "Di luar pekerjaan utama, saya mengerjakan proyek pribadi seperti aplikasi mobile Djajan dan portal admin DJualan.": "Outside my main job, I work on personal projects such as the Djajan mobile app and the DJualan admin portal.", "Pekerjaan yang paling sering saya kerjakan dan paling saya kuasai.": "The work I do most often and know best.", "REST API dan backend": "REST APIs and backend", "API dengan ASP.NET Core dan C#, autentikasi JWT/HMAC, antrean pesan RabbitMQ, dan basis data SQL Server atau PostgreSQL. Dikemas dengan Docker.": "APIs with ASP.NET Core and C#, JWT/HMAC authentication, RabbitMQ message queues, and SQL Server or PostgreSQL databases. Packaged with Docker.", "Aplikasi web dan dashboard": "Web apps and dashboards", "Sistem internal, dashboard laporan, dan portal bisnis dengan Vue.js, React, atau Next.js, lengkap dengan tabel, filter, dan ekspor data.": "Internal systems, reporting dashboards, and business portals with Vue.js, React, or Next.js, complete with tables, filters, and data export.", "Aplikasi mobile": "Mobile apps", "Aplikasi Android dan iOS dengan React Native dan Expo, terhubung ke backend Node.js atau .NET.": "Android and iOS apps with React Native and Expo, connected to a Node.js or .NET backend.", "Otomasi dokumen dan impor data": "Document automation and data import", "Membaca data dari dokumen PDF dan Excel menjadi data terstruktur, memvalidasinya, lalu memasukkannya ke sistem Anda.": "Turning PDF and Excel documents into structured data, validating it, and loading it into your system.", "Proyek pilihan": "Selected projects", "Klik gambar untuk melihat ukuran penuh.": "Click an image to see it full size.", "Sistem manajemen kuota impor baja": "Steel import quota management system", "Aplikasi web dan layanan backend untuk perusahaan trading baja di Indonesia": "Web application and backend services for a steel trading company in Indonesia", "Sistem ini menggantikan pencatatan kuota impor secara manual. Tim EXIM dapat mengunggah dokumen izin kuota, memeriksa perbedaan data sebelum diterbitkan, lalu memantau pemakaian kuota setiap pembelian.": "This system replaces manual tracking of import quotas. The EXIM team can upload quota permit documents, review data discrepancies before publishing, and then track quota usage on every purchase.", "Impor dokumen kuota PDF (SPI dan USDFS), dibaca otomatis dengan parser buatan sendiri, lalu dicek perbedaannya sebelum dipublikasikan.": "Import of PDF quota documents (SPI and USDFS), read automatically with a custom parser, then checked for discrepancies before publishing.", "Dashboard realisasi: kuota terpakai, tertahan (on hold), dan tersisa, serta estimasi per bulan.": "Realisation dashboard: used, on-hold, and remaining quota, plus monthly estimates.", "Purchase order dengan impor Excel, yang menahan kuota secara otomatis.": "Purchase orders with Excel import, which hold quota automatically.", "Riwayat perubahan kuota per kode HS dan pelabuhan tujuan.": "Quota change history per HS code and destination port.", "Arsitektur microservice: ASP.NET Core 9, JWT, HMAC, RabbitMQ, Docker.": "Microservice architecture: ASP.NET Core 9, JWT, HMAC, RabbitMQ, Docker.", "Dashboard realisasi kuota": "Quota realisation dashboard", "Estimasi kuota per bulan": "Monthly quota estimate", "Estimasi kuota per bulan dengan pemilih bulan": "Monthly quota estimate with month selector", "Filter periode laporan": "Report period filter", "Filter periode tanggal pada dashboard": "Date range filter on the dashboard", "Impor dokumen kuota": "Quota document import", "Dialog impor dokumen kuota SPI dan USDFS": "Import dialog for SPI and USDFS quota documents", "Verifikasi dan deteksi perbedaan": "Verification and discrepancy detection", "Verifikasi dokumen dan deteksi perbedaan": "Document verification and discrepancy detection", "Halaman verifikasi dokumen kuota dengan daftar perbedaan": "Quota document verification page with discrepancy list", "Purchase order dan impor Excel": "Purchase orders and Excel import", "Detail purchase order": "Purchase order detail", "Halaman detail purchase order dengan impor Excel": "Purchase order detail page with Excel import", "Detail kuota dan riwayat": "Quota detail and history", "Detail kuota per kode HS": "Quota detail per HS code", "Detail kuota per kode HS dengan riwayat perubahan": "Quota detail per HS code with change history", "Nama klien, nomor dokumen izin, data pemasok, dan identitas pengguna pada tangkapan layar telah disamarkan demi kerahasiaan.": "Client names, permit document numbers, supplier data, and user identities in the screenshots have been blurred for confidentiality.", "Portal admin e-commerce berbasis web ·": "Web-based e-commerce admin portal ·", "Lihat kode di GitHub": "View code on GitHub", "Aplikasi web modular untuk membantu pemilik toko online mengelola bisnisnya dari satu dasbor yang responsif.": "A modular web application that helps online store owners run their business from one responsive dashboard.", "Mengelola produk, memantau pesanan, melihat laporan penjualan, dan mengatur pengguna.": "Manage products, monitor orders, view sales reports, and administer users.", "Backend ASP.NET Core dengan arsitektur berlapis (API, Core, Data, Service) dan basis data SQL Server.": "ASP.NET Core backend with a layered architecture (API, Core, Data, Service) and a SQL Server database.", "Antarmuka React dengan TypeScript dan SCSS.": "React front end with TypeScript and SCSS.", "Unit test untuk lapisan Service dan Controller.": "Unit tests for the Service and Controller layers.", "Tangkapan layar aplikasi akan segera ditambahkan. Kode sumbernya terbuka di GitHub.": "App screenshots coming soon. The source code is open on GitHub.", "Aplikasi mobile marketplace makanan dan minuman untuk UMKM": "Mobile marketplace app for food and beverages from small local businesses (UMKM)", "Aplikasi pesan-antar bergaya GoFood/GrabFood yang berfokus pada UMKM, dengan peran Pembeli dan Penjual.": "A GoFood/GrabFood-style delivery app focused on UMKM, with Buyer and Seller roles.", "Pembeli menelusuri penjual terdekat dengan filter radius (1 km sampai semua), lalu mencari berdasarkan nama atau produk.": "Buyers browse nearby sellers with a radius filter (1 km to all), then search by name or product.", "Menu penjual dengan foto, kategori, ukuran, dan pilihan es untuk minuman. Pilihan tersebut ikut tersimpan di keranjang.": "Seller menus with photos, categories, sizes, and ice-level options for drinks. These choices are saved in the cart.", "Dashboard terpisah untuk setiap peran pengguna.": "A separate dashboard for each user role.", "Tampilan aplikasi akan segera ditambahkan. Kode sumber bersifat privat dan dapat didemonstrasikan atas permintaan.": "App screens coming soon. The source code is private and can be demonstrated on request.", "Des 2021 sampai sekarang": "Dec 2021 to present", "Okt 2020 sampai Nov 2021": "Oct 2020 to Nov 2021", "Nov 2019 sampai Okt 2020": "Nov 2019 to Oct 2020", "Agu 2017 sampai Des 2019": "Aug 2017 to Dec 2019", "Keahlian": "Skills", "Cloud dan DevOps": "Cloud and DevOps", "Basis data": "Databases", "AI dan otomasi": "AI and automation", "Dapat diverifikasi secara online.": "Verifiable online.", "Diterbitkan oleh Microsoft, Desember 2024.": "Issued by Microsoft, December 2024.", "Verifikasi di Microsoft Learn": "Verify on Microsoft Learn", "Level C1 Advanced dengan skor 65/100 (Reading dan Listening), diberikan 15 April 2025.": "C1 Advanced level with a score of 65/100 (Reading and Listening), awarded 15 April 2025.", "Lihat sertifikat": "View certificate", "Mulai diskusi proyek": "Let's discuss your project", "Ceritakan kebutuhan Anda, dan saya akan membalas dengan estimasi waktu dan pendekatan teknis.": "Tell me what you need, and I'll reply with a time estimate and a technical approach.", "Lokasi": "Location", "Tampilan gambar penuh": "Full-size image", "Tutup": "Close", "Saya terbiasa bekerja dengan tim yang tersebar di beberapa zona waktu, menjelaskan pilihan teknis dengan bahasa yang mudah dipahami, dan menyerahkan hasil kerja yang rapi: kode teruji, dokumentasi, dan alur yang bisa diteruskan tim Anda. Saya juga telah menjadi Scrum Master selama lebih dari 3 tahun.": "I'm used to working with teams spread across time zones, explaining technical choices in plain language, and delivering tidy work: tested code, documentation, and a flow your team can carry on. I've also worked as a Scrum Master for over 3 years.", "Modul ERP untuk 1000+ klien perusahaan, migrasi komponen C++ ke .NET Core, otomasi pengujian BDD, dan Scrum Master untuk 8 developer.": "ERP modules for 1000+ enterprise clients, migration of C++ components to .NET Core, BDD test automation, and Scrum Master for 8 developers.", "Otomasi dengan AI dan MCP": "AI and MCP automation", "Mengotomatiskan tugas berulang dengan Claude Code dan server MCP buatan sendiri, mulai dari pembuatan dokumen, pengujian, hingga unggah ke Google Drive. Setiap hasil ditinjau manual sebelum dipakai.": "Automating repetitive tasks with Claude Code and custom-built MCP servers, from document generation and testing to Google Drive upload. Every result is reviewed by hand before use.", "Cara kerja": "How I work", "Ritme Scrum yang sudah saya jalankan lebih dari 3 tahun sebagai Scrum Master.": "The Scrum rhythm I've run for over 3 years as a Scrum Master.", "Diskusi dan estimasi": "Discussion and estimate", "Kita membahas tujuan dan batasan proyek. Anda menerima estimasi waktu dan biaya sebelum pekerjaan dimulai.": "We go over the goals and constraints of the project. You receive a time and cost estimate before work begins.", "Sprint pendek": "Short sprints", "Pekerjaan dibagi per sprint dua mingguan dengan target yang jelas dan terukur.": "Work is split into two-week sprints with clear, measurable goals.", "Laporan dan demo rutin": "Regular reports and demos", "Anda memantau kemajuan lewat demo berkala dan laporan singkat di Slack atau WhatsApp, dengan tugas dilacak di Jira.": "You follow progress through periodic demos and short reports on Slack or WhatsApp, with tasks tracked in Jira.", "Serah terima": "Handover", "Kode teruji, dokumentasi, dan panduan penggunaan diserahkan agar tim Anda bisa meneruskannya.": "Tested code, documentation, and a usage guide are handed over so your team can carry it on.", "Alat otomasi pribadi dengan C# dan Claude Desktop": "Personal automation tool built with C# and Claude Desktop", "Generator CV dengan MCP": "CV generator with MCP", "Server MCP buatan sendiri yang membuat CV dalam bentuk PDF lewat percakapan dengan Claude, lalu mengunggahnya ke Google Drive.": "A custom-built MCP server that creates CVs as PDFs through a conversation with Claude, then uploads them to Google Drive.", "Satu perintah,": "One command,", "Dapat mengganti berkas lama di Google Drive tanpa mengubah tautan berbagi, sekaligus menandainya sebagai favorit.": "Can replace the old file on Google Drive without changing its sharing link, and star it at the same time.", "Autentikasi OAuth ke Google Drive dengan token tersimpan, sehingga tidak perlu login ulang setiap kali dijalankan.": "OAuth authentication to Google Drive with a stored token, so there's no need to log in again on every run.", "Berjalan sebagai server MCP (stdio) yang terdaftar di Claude Desktop.": "Runs as an MCP (stdio) server registered in Claude Desktop.", "Tangkapan layar akan segera ditambahkan. Demo langsung dapat ditunjukkan atas permintaan.": "Screenshots coming soon. A live demo can be shown on request.", "Kolaborasi": "Collaboration", ", membuat ulang PDF dari template HTML (PuppeteerSharp) beserta metadata PDF-nya.": ", regenerates the PDF from an HTML template (PuppeteerSharp), including its PDF metadata.", "Hobi": "Hobbies", "Shutterstock · Mengabadikan momen": "Shutterstock · Capture a moment", "Turun ke lapangan": "Hit the court", "Tekan mulai": "Press start", "Proyek Utama (Freelance & Kontrak)": "Key Projects (Freelance & Contract)", "Nov 2025 – Jun 2026": "Nov 2025 – Jun 2026", "Okt 2023 – Des 2024": "Oct 2023 – Dec 2024", "Des 2022": "Dec 2022", "Des 2021 – Jun 2022": "Dec 2021 – Jun 2022", "Merancang arsitektur microservice yang menangani": "Architected microservices handling", "10K+ permintaan API/hari": "10K+ API requests/day", "dengan tingkat uptime 99,9%.": "with 99.9% uptime.", "Menyediakan": "Provided", "dukungan sistem kritikal 24/7": "24/7 critical system support", "untuk perangkat lunak enterprise.": "for enterprise software.", "Membangun sistem verifikasi identitas aman yang memproses": "Built secure verification tools processing", "5K+ verifikasi/bulan": "5K+ verifications/month", "Mengembangkan aplikasi web untuk klien dengan": "Delivered client-facing web apps with a", "tingkat kepuasan 100%": "100% satisfaction", "Cicip rasa baru": "Taste something new"};
+  var EN={"Navigasi utama": "Main navigation", "Tentang": "About", "Layanan": "Services", "Proyek": "Projects", "Pengalaman": "Experience", "Sertifikat": "Certifications", "Kontak": "Contact", "Bahasa": "Language", "Ganti tema terang/gelap": "Toggle light/dark theme", "9+ tahun pengalaman": "9+ years of experience", "Bekerja remote, bahasa Indonesia & Inggris": "Works remotely, Indonesian & English", "Hubungi via WhatsApp": "Contact via WhatsApp", "Dashboard realisasi kuota impor baja dengan grafik penggunaan dan tabel realisasi impor": "Steel import quota dashboard with usage charts and import realisation table", "Tentang saya": "About me", "Foto Dwiki Ikhwan": "Photo of Dwiki Ikhwan", "REST API dan backend": "REST APIs and backend", "Aplikasi web dan dashboard": "Web apps and dashboards", "Aplikasi mobile": "Mobile apps", "Otomasi dokumen dan impor data": "Document automation and data import", "Proyek pilihan": "Selected projects", "Sistem manajemen kuota impor baja": "Steel import quota management system", "Aplikasi web dan layanan backend untuk perusahaan trading baja di Indonesia": "Web application and backend services for a steel trading company in Indonesia", "Arsitektur microservice: ASP.NET Core 9, JWT, HMAC, RabbitMQ, Docker.": "Microservice architecture: ASP.NET Core 9, JWT, HMAC, RabbitMQ, Docker.", "Dashboard realisasi kuota": "Quota realisation dashboard", "Estimasi kuota per bulan": "Monthly quota estimate", "Estimasi kuota per bulan dengan pemilih bulan": "Monthly quota estimate with month selector", "Filter periode laporan": "Report period filter", "Filter periode tanggal pada dashboard": "Date range filter on the dashboard", "Impor dokumen kuota": "Quota document import", "Dialog impor dokumen kuota SPI dan USDFS": "Import dialog for SPI and USDFS quota documents", "Verifikasi dan deteksi perbedaan": "Verification and discrepancy detection", "Verifikasi dokumen dan deteksi perbedaan": "Document verification and discrepancy detection", "Halaman verifikasi dokumen kuota dengan daftar perbedaan": "Quota document verification page with discrepancy list", "Purchase order dan impor Excel": "Purchase orders and Excel import", "Detail purchase order": "Purchase order detail", "Halaman detail purchase order dengan impor Excel": "Purchase order detail page with Excel import", "Detail kuota dan riwayat": "Quota detail and history", "Detail kuota per kode HS": "Quota detail per HS code", "Detail kuota per kode HS dengan riwayat perubahan": "Quota detail per HS code with change history", "Nama klien, nomor dokumen izin, data pemasok, dan identitas pengguna pada tangkapan layar telah disamarkan demi kerahasiaan.": "Client names, permit document numbers, supplier data, and user identities in the screenshots have been blurred for confidentiality.", "Portal admin e-commerce berbasis web ·": "Web-based e-commerce admin portal ·", "Lihat kode di GitHub": "View code on GitHub", "Aplikasi web modular untuk membantu pemilik toko online mengelola bisnisnya dari satu dasbor yang responsif.": "A modular web application that helps online store owners run their business from one responsive dashboard.", "Mengelola produk, memantau pesanan, melihat laporan penjualan, dan mengatur pengguna.": "Manage products, monitor orders, view sales reports, and administer users.", "Backend ASP.NET Core dengan arsitektur berlapis (API, Core, Data, Service) dan basis data SQL Server.": "ASP.NET Core backend with a layered architecture (API, Core, Data, Service) and a SQL Server database.", "Antarmuka React dengan TypeScript dan SCSS.": "React front end with TypeScript and SCSS.", "Unit test untuk lapisan Service dan Controller.": "Unit tests for the Service and Controller layers.", "Aplikasi mobile marketplace makanan dan minuman untuk UMKM": "Mobile marketplace app for food and beverages from small local businesses (UMKM)", "Pembeli menelusuri penjual terdekat dengan filter radius (1 km sampai semua), lalu mencari berdasarkan nama atau produk.": "Buyers browse nearby sellers with a radius filter (1 km to all), then search by name or product.", "Menu penjual dengan foto, kategori, ukuran, dan pilihan es untuk minuman. Pilihan tersebut ikut tersimpan di keranjang.": "Seller menus with photos, categories, sizes, and ice-level options for drinks. These choices are saved in the cart.", "Dashboard terpisah untuk setiap peran pengguna.": "A separate dashboard for each user role.", "Des 2021 sampai sekarang": "Dec 2021 to present", "Okt 2020 sampai Nov 2021": "Oct 2020 to Nov 2021", "Nov 2019 sampai Okt 2020": "Nov 2019 to Oct 2020", "Agu 2017 sampai Des 2019": "Aug 2017 to Dec 2019", "Keahlian": "Skills", "Cloud dan DevOps": "Cloud and DevOps", "Basis data": "Databases", "AI dan otomasi": "AI and automation", "Diterbitkan oleh Microsoft, Desember 2024.": "Issued by Microsoft, December 2024.", "Verifikasi di Microsoft Learn": "Verify on Microsoft Learn", "Level C1 Advanced dengan skor 65/100 (Reading dan Listening), diberikan 15 April 2025.": "C1 Advanced level with a score of 65/100 (Reading and Listening), awarded 15 April 2025.", "Lihat sertifikat": "View certificate", "Lokasi": "Location", "Tampilan gambar penuh": "Full-size image", "Tutup": "Close", "Modul ERP untuk 1000+ klien perusahaan, migrasi komponen C++ ke .NET Core, otomasi pengujian BDD, dan Scrum Master untuk 8 developer.": "ERP modules for 1000+ enterprise clients, migration of C++ components to .NET Core, BDD test automation, and Scrum Master for 8 developers.", "Otomasi dengan AI dan MCP": "AI and MCP automation", "Cara kerja": "How I work", "Diskusi dan estimasi": "Discussion and estimate", "Sprint pendek": "Short sprints", "Laporan dan demo rutin": "Regular reports and demos", "Serah terima": "Handover", "Alat otomasi pribadi dengan C# dan Claude Desktop": "Personal automation tool built with C# and Claude Desktop", "Generator CV dengan MCP": "CV generator with MCP", "Satu perintah,": "One command,", "Dapat mengganti berkas lama di Google Drive tanpa mengubah tautan berbagi, sekaligus menandainya sebagai favorit.": "Can replace the old file on Google Drive without changing its sharing link, and star it at the same time.", "Autentikasi OAuth ke Google Drive dengan token tersimpan, sehingga tidak perlu login ulang setiap kali dijalankan.": "OAuth authentication to Google Drive with a stored token, so there's no need to log in again on every run.", "Berjalan sebagai server MCP (stdio) yang terdaftar di Claude Desktop.": "Runs as an MCP (stdio) server registered in Claude Desktop.", "Kolaborasi": "Collaboration", "Proyek Utama (Freelance & Kontrak)": "Key Projects (Freelance & Contract)", "Shutterstock · Mengabadikan momen": "Shutterstock · Capture a moment", "Okt 2023 – Des 2024": "Oct 2023 – Dec 2024", "Des 2022": "Dec 2022", "Des 2021 – Jun 2022": "Dec 2021 – Jun 2022", "Tekan mulai": "Press start", "Turun ke lapangan": "Hit the court", "Cicip rasa baru": "Taste something new", "Hobi": "Hobbies", "Saya membangun sistem bisnis yang andal, dari API dan aplikasi web sampai aplikasi mobile.": "I build reliable business systems, from APIs and web apps to mobile apps.", "Dengan 9+ tahun pengalaman di .NET, Azure, dan JavaScript modern, saya membantu perusahaan energi, manufaktur, dan ERP mengubah proses yang rumit menjadi aplikasi yang mudah dipakai tim Anda.": "With 9+ years of experience in .NET, Azure, and modern JavaScript, I help energy, manufacturing, and ERP companies turn complicated processes into applications your team finds easy to use.", "Diskusikan proyek Anda": "Discuss your project", "Lihat hasil kerja saya": "See my work", "Salah satu sistem yang saya bangun: dashboard kuota impor baja yang dipakai tim EXIM.": "One of the systems I built: a steel import quota dashboard used by the EXIM team.", "Saya Dwiki Ikhwan, developer remote di Bogor. Sejak 2017 saya membangun aplikasi untuk perusahaan energi, manufaktur, dan ERP, mulai dari modul yang melayani lebih dari 1.000 klien perusahaan sampai sistem internal yang menjadi andalan tim operasional.": "I'm Dwiki Ikhwan, a remote developer based in Bogor. Since 2017 I've built applications for energy, manufacturing, and ERP companies, from modules serving more than 1,000 enterprise clients to internal systems that operations teams rely on.", "Bagi saya, proyek yang baik bukan hanya kode yang berjalan. Anda tahu apa yang sedang dikerjakan, pilihan teknis dijelaskan dengan bahasa yang mudah dipahami, dan hasil akhirnya rapi: kode teruji, terdokumentasi, dan siap diteruskan tim Anda. Selama lebih dari 3 tahun sebagai Scrum Master, saya terbiasa memimpin tim lintas zona waktu agar pekerjaan tetap terarah dan tepat sasaran.": "To me, a good project is more than code that runs. You know what's being worked on, technical choices are explained in plain language, and the end result is tidy: tested, documented code that's ready for your team to carry on. In more than 3 years as a Scrum Master, I've grown used to leading teams across time zones so the work stays focused and on target.", "Di luar pekerjaan utama, saya terus membangun proyek pribadi seperti aplikasi mobile Djajan dan portal admin DJualan, cara saya menjaga keterampilan tetap tajam.": "Outside my main job, I keep building personal projects such as the Djajan mobile app and the DJualan admin portal, which is how I keep my skills sharp.", "Lima hal yang paling saya kuasai, dan siap saya kerjakan untuk Anda.": "Five things I do best, ready to be put to work for you.", "API yang cepat, aman, dan mudah dikembangkan. Saya bekerja dengan ASP.NET Core dan C#, autentikasi JWT/HMAC, antrean pesan RabbitMQ, serta SQL Server atau PostgreSQL, dikemas dengan Docker agar mudah dipasang di server Anda.": "Fast, secure APIs that are easy to extend. I work with ASP.NET Core and C#, JWT/HMAC authentication, RabbitMQ message queues, and SQL Server or PostgreSQL, packaged with Docker so they're easy to deploy on your servers.", "Ubah data yang tersebar menjadi dashboard yang jelas. Sistem internal, laporan, dan portal bisnis dengan Vue.js, React, atau Next.js, lengkap dengan tabel, filter, dan ekspor data.": "Turn scattered data into clear dashboards. Internal systems, reports, and business portals built with Vue.js, React, or Next.js, complete with tables, filters, and data export.", "Satu basis kode untuk Android dan iOS. Dibangun dengan React Native dan Expo, terhubung langsung ke backend Node.js atau .NET Anda.": "One codebase for Android and iOS. Built with React Native and Expo, connected directly to your Node.js or .NET backend.", "Tak perlu lagi mengetik ulang data dari dokumen. Saya mengubah PDF dan Excel menjadi data terstruktur, memvalidasinya, lalu memasukkannya ke sistem Anda.": "No more retyping data from documents. I turn PDFs and Excel files into structured data, validate it, and load it into your system.", "Hemat waktu untuk tugas berulang. Dengan Claude Code dan server MCP buatan sendiri, saya mengotomatiskan pembuatan dokumen, pengujian, hingga unggah ke Google Drive. Setiap hasil tetap saya tinjau manual sebelum Anda gunakan.": "Save time on repetitive tasks. With Claude Code and custom-built MCP servers, I automate document generation, testing, and Google Drive uploads. I still review every result by hand before you use it.", "Proses yang jelas dari awal sampai akhir, dengan ritme Scrum yang sudah saya jalankan lebih dari 3 tahun sebagai Scrum Master.": "A clear process from start to finish, with the Scrum rhythm I've run for over 3 years as a Scrum Master.", "Kita bahas tujuan dan batasan proyek. Sebelum mulai, Anda sudah tahu estimasi waktu dan biayanya.": "We go over your goals and constraints. Before we start, you know the time and cost estimate.", "Pekerjaan dibagi per sprint dua mingguan dengan target yang jelas, jadi Anda selalu tahu apa yang akan selesai berikutnya.": "Work is split into two-week sprints with clear goals, so you always know what will be finished next.", "Anda melihat kemajuan nyata lewat demo berkala dan laporan singkat di Slack atau WhatsApp. Tugas dilacak di Jira, tanpa kejutan di akhir.": "You see real progress through regular demos and short reports on Slack or WhatsApp. Tasks are tracked in Jira, with no surprises at the end.", "Anda menerima kode teruji, dokumentasi, dan panduan penggunaan, sehingga tim Anda bisa meneruskannya tanpa bergantung pada saya.": "You receive tested code, documentation, and a usage guide, so your team can carry on without depending on me.", "Beberapa sistem nyata yang pernah saya bangun. Klik gambar untuk melihat ukuran penuh.": "Real systems I've built. Click an image to see it full size.", "Sistem ini membantu tim EXIM mengelola kuota impor dengan lebih terkontrol: mengunggah dokumen izin kuota, memeriksa perbedaan data sebelum diterbitkan, lalu memantau pemakaian kuota di setiap pembelian.": "This system helps the EXIM team manage import quotas with more control: uploading quota permit documents, reviewing data discrepancies before publishing, and then monitoring quota usage on every purchase.", "Dokumen kuota PDF (SPI dan USDFS) dibaca otomatis oleh parser buatan sendiri, lalu perbedaannya dicek sebelum dipublikasikan, sehingga risiko salah input berkurang.": "PDF quota documents (SPI and USDFS) are read automatically by a custom parser, then checked for discrepancies before publishing, which reduces the risk of input errors.", "Dashboard realisasi menampilkan kuota terpakai, tertahan (on hold), dan tersisa, plus estimasi per bulan.": "The realisation dashboard shows used, on-hold, and remaining quota, plus monthly estimates.", "Purchase order dapat diimpor dari Excel dan menahan kuota secara otomatis.": "Purchase orders can be imported from Excel and hold quota automatically.", "Riwayat perubahan kuota per kode HS dan pelabuhan tujuan, sehingga setiap perubahan bisa ditelusuri.": "Quota change history per HS code and destination port, so every change can be traced.", "Kode sumbernya terbuka di GitHub, dan demo langsung tersedia atas permintaan.": "The source code is open on GitHub, and a live demo is available on request.", "Aplikasi pesan-antar bergaya GoFood/GrabFood yang dirancang khusus untuk UMKM, dengan peran Pembeli dan Penjual.": "A GoFood/GrabFood-style delivery app designed specifically for UMKM, with Buyer and Seller roles.", "Kode sumbernya privat, dan demo langsung tersedia atas permintaan.": "The source code is private, and a live demo is available on request.", "Cukup minta lewat percakapan dengan Claude: server MCP buatan sendiri ini membuat CV dalam bentuk PDF dan langsung mengunggahnya ke Google Drive.": "Just ask in a conversation with Claude: this custom-built MCP server generates a CV as a PDF and uploads it straight to Google Drive.", "Demo langsung tersedia atas permintaan.": "A live demo is available on request.", "Kredensial resmi yang dapat Anda verifikasi sendiri secara online.": "Official credentials you can verify yourself online.", "Punya proyek? Mari diskusikan.": "Have a project? Let's talk.", "Ceritakan kebutuhan Anda secara singkat. Saya akan membalas dengan estimasi waktu dan langkah teknis yang konkret.": "Tell me briefly what you need. I'll reply with a time estimate and concrete technical steps.", ", membuat ulang PDF dari template HTML (PuppeteerSharp) beserta metadata PDF-nya.": ", regenerates the PDF from an HTML template (PuppeteerSharp), including its PDF metadata."};
   var WA={id:'Halo Dwiki, saya tertarik dengan jasa pengembangan software Anda.',en:"Hello Dwiki, I'm interested in your software development services."};
-  var DESC_EN='Freelance backend & full-stack developer: .NET REST APIs, web apps, React Native mobile apps, and PDF document automation.';
+  var DESC_EN='Freelance .NET, backend, and full-stack developer: REST APIs, web apps, React Native mobile apps, and document and AI automation.';
   var lang='id'; try{lang=localStorage.getItem('lang')||'id'}catch(e){}
   if(lang!=='en') lang='id';
   function norm(x){return x.replace(/\s+/g,' ').trim()}
@@ -623,11 +649,9 @@ dialog .scroll{overflow:auto;max-height:calc(92vh - 56px)}
       }
     }
     document.querySelectorAll('[data-tl]').forEach(function(tl){
-      var fill=tl.querySelector('.tl-fill');
-      if(!fill) return;
       var r=tl.getBoundingClientRect();
       var prog=(vh*0.72-r.top)/(r.height||1);
-      fill.style.transform='scaleY('+Math.max(0,Math.min(1,prog))+')';
+      tl.style.setProperty('--p',Math.max(0,Math.min(1,prog)));
     });
     /* screenshots in the gallery pan slowly as they pass through the viewport */
     document.querySelectorAll('.shot img').forEach(function(im){
